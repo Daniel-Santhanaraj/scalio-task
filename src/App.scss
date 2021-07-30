@@ -25,6 +25,15 @@ body {
   padding: 0 15px;
 }
 
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 150px 0;
+  width: 100%;
+}
+
 .search {
   display: flex;
   padding: 15px ;
@@ -108,14 +117,7 @@ body {
       }
     }
 
-    .no-data {
-      text-align: center;
-      font-size: 18px;
-      text-transform: uppercase;
-      font-weight: 700;
-      margin: 150px 0;
-      width: 100%;
-    }
+    
   }
 
   .sort {

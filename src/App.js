@@ -18,8 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-
-  const [login, setLogin] = useState('');
   const [result, setResult ] = useState([]);
   const [loader, setLoader ] = useState(false);
 
@@ -27,13 +25,13 @@ function App() {
   const perPage = 9;
   const [totalPage, setTotalPage ] = useState(0);
   const [message, setMessage ] = useState("");
+  const [login, setLogin] = useState('');
 
   const dataCall = () => {
-    if(login !== '') {
-      setCurrentPageCount(currentPageCount);
       setLoader(true);
+      console.log(login, currentPageCount)
       let url = 'https://api.github.com/search/users?q='+login+'%20in:login&per_page='+perPage+'&&page='+currentPageCount;
-      console.log(url);
+     
       fetch(url)
       .then((res) => res.json())
       .then((d) => {
@@ -46,23 +44,23 @@ function App() {
         }
         setLoader(false);
       });
-    }
   }
-
   useEffect(dataCall, [login, currentPageCount]);
-
  
 
   return (
     <div className="App">
       <div className="body-wrap">
         <div className="container">
-          <Search getLogin = { login => setLogin(login) }/>
+          <Search getLogin = { login => setLogin(login)}  setPage = { currentPageCount => setCurrentPageCount(currentPageCount) }/>
           { (!loader) ?
               <div>
+                {(login !== '') ? 
                 <Results result={result} message={message}/>
+                : <p className="no-data">{ "No Data... Continue search"}</p>
+                }
                 {
-                  (totalPage > 0 ) ? 
+                  (totalPage > 0 && login !== '') ? 
                   <div className={classes.root+" padding15"}>
                     <Pagination 
                     count={totalPage}

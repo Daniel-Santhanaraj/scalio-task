@@ -4,7 +4,6 @@ const Result = (props) => {
     
     const [isSort, setSort] = useState(false)
     //const [cCount, setCount] = useState(1);
-    console.log(props.message);
     var sorted = null;
     if( props.result.length !== 0 && props.result.items.length > 0) {
         sorted =  props.result.items.sort((a,b) => { 
