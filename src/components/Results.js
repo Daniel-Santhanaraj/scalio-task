@@ -44,7 +44,7 @@ const Result = (props) => {
                         </div>
                     )
                 })
-                : <p className="no-data">{(props.message) ? props.message : "Search Data"}</p>
+                : <p className="no-data">{(props.message) ? props.message : "No Data... Continue search"}</p>
             }
             </div>
         </div>
