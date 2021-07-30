@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 
 const Result = (props) => {
+    
     const [isSort, setSort] = useState(false)
+    //const [cCount, setCount] = useState(1);
+    console.log(props.message);
     var sorted = null;
     if( props.result.length !== 0 && props.result.items.length > 0) {
         sorted =  props.result.items.sort((a,b) => { 
@@ -22,14 +25,14 @@ const Result = (props) => {
     return (
         <div className="result">
             {
-                (sorted) ? 
+                (sorted && !props.message) ? 
                 <h2 className="sort">Sort By <span onClick={() => setSort(!isSort)} className={(isSort) ? 'active': ''}>Login</span></h2>
                 : null
             }
            
             <div className="sortDiv">
             {  
-                (sorted) ?
+                (sorted && !props.message) ?
                 sorted.map((item, i) => {
                     return (
                         <div className="cardDiv" key={i}>
@@ -41,7 +44,7 @@ const Result = (props) => {
                         </div>
                     )
                 })
-                : <p className="no-data">Search data</p>
+                : <p className="no-data">{(props.message) ? props.message : "Search Data"}</p>
             }
             </div>
         </div>
