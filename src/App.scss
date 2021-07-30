@@ -1,8 +1,134 @@
 $font : 'Nunito', sans-serif;
+$red: #D5333E;
+$color: #161616;
+$white: #fff;
+
+* {
+  transition: all 0.5s ease;
+}
 
 body {
   margin: 0;
   font-family: $font;
+  color: $color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 1170px;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.search {
+  display: flex;
+  padding: 15px 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: middle;
+
+  h1 {
+    margin: 0
+  }
+
+  input {
+    padding: 10px 20px;
+    width: 250px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 45px;
+  }
+
+  button {
+    background-color: $red;
+    border: 2px solid $red;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: $white;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    font-weight: 700;
+    height: 45px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+      color: $red;
+    }
+  }
+}
+
+.result {
+  .sortDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    .cardDiv {
+      padding: 20px;
+      width: 25%;
+      box-sizing: border-box;
+      .card {
+        text-align: center;
+        box-shadow: 0 0 9px 0 rgb(0 0 0 / 10%);
+        padding: 20px 0;
+
+       
+        &:hover img {
+          transform: scale(1.1);
+        }
+
+        h3 {
+          font-size: 18px;
+          margin: 10px 0 5px;
+        }
+
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          border: 1px solid #f5f5f5;
+
+         
+        }
+
+        p {
+          font-size: 14px;
+          margin: 0;
+        }
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 150px 0;
+      width: 100%;
+    }
+  }
+
+  .sort {
+    font-size: 16px;
+
+    span {
+      padding: 5px 10px;
+      margin: 0 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid $red;
+      background: #fff;
+      color: $color;
+
+      &.active {
+        background-color: $red;
+        color: $white;
+      }
+    }
+  }
+
 }
