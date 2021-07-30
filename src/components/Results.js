@@ -41,7 +41,7 @@ const Result = (props) => {
                         </div>
                     )
                 })
-                : <p className="no-data">No data</p>
+                : <p className="no-data">Search data</p>
             }
             </div>
         </div>

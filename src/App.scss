@@ -23,7 +23,7 @@ body {
 
 .search {
   display: flex;
-  padding: 15px 0;
+  padding: 15px ;
   flex-direction: row;
   justify-content: space-between;
   align-items: middle;
@@ -62,21 +62,25 @@ body {
 }
 
 .result {
+
   .sortDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
+
     .cardDiv {
-      padding: 20px;
+      padding: 15px;
       width: 25%;
       box-sizing: border-box;
+
+     
+
       .card {
         text-align: center;
         box-shadow: 0 0 9px 0 rgb(0 0 0 / 10%);
         padding: 20px 0;
 
-       
         &:hover img {
           transform: scale(1.1);
         }
@@ -91,8 +95,6 @@ body {
           height: 100px;
           border-radius: 50%;
           border: 1px solid #f5f5f5;
-
-         
         }
 
         p {
@@ -114,6 +116,7 @@ body {
 
   .sort {
     font-size: 16px;
+    padding: 0 15px;
 
     span {
       padding: 5px 10px;
@@ -123,6 +126,11 @@ body {
       border: 1px solid $red;
       background: #fff;
       color: $color;
+      box-sizing: border-box;
+
+      &:hover {
+        border: 3px solid $red;
+      }
 
       &.active {
         background-color: $red;
@@ -131,4 +139,161 @@ body {
     }
   }
 
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  .search {
+    display: block;
+    text-align: center;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 218px;
+      display: inline-block;
+    }
+    button {
+      display: inline-block;
+      padding: 10px;
+    }
+  }
+
+  .result {
+
+    .sortDiv {
+
+      .cardDiv {
+        width: 50%;
+
+        .card {
+          img {
+            width: 55px;
+            height: 55px;
+          }
+
+          h3 {
+            font-size: 14px;
+          }
+
+          p {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* Css loader */
+.body-wrap {
+  background-color: $white;
+}
+@keyframes lds-roller {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.lds-roller {
+	display: inline-block;
+	position: fixed;
+	width: 80px;
+	height: 80px;
+  left: 0;
+  right: 0;
+  margin: AUTO;
+  top: 0;
+  bottom: 0;
+
+	div {
+		animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		transform-origin: 40px 40px;
+
+		&:after {
+			content: " ";
+			display: block;
+			position: absolute;
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: $red;
+			margin: -4px 0 0 -4px;
+		}
+
+		&:nth-child(1) {
+			animation-delay: -0.036s;
+
+			&:after {
+				top: 63px;
+				left: 63px;
+			}
+		}
+
+		&:nth-child(2) {
+			animation-delay: -0.072s;
+
+			&:after {
+				top: 68px;
+				left: 56px;
+			}
+		}
+
+		&:nth-child(3) {
+			animation-delay: -0.108s;
+
+			&:after {
+				top: 71px;
+				left: 48px;
+			}
+		}
+		&:nth-child(4) {
+			animation-delay: -0.144s;
+			&:after {
+				top: 72px;
+				left: 40px;
+			}
+		}
+		&:nth-child(5) {
+			animation-delay: -0.18s;
+			&:after {
+				top: 71px;
+				left: 32px;
+			}
+		}
+		&:nth-child(6) {
+			animation-delay: -0.216s;
+			&:after {
+				top: 68px;
+				left: 24px;
+			}
+		}
+		&:nth-child(7) {
+			animation-delay: -0.252s;
+			&:after {
+				top: 63px;
+				left: 17px;
+			}
+		}
+		&:nth-child(8) {
+			animation-delay: -0.288s;
+			&:after {
+				top: 56px;
+				left: 12px;
+			}
+		}
+	}
 }

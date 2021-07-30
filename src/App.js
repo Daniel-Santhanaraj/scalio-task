@@ -6,15 +6,19 @@ import Results from './components/Results';
 function App() {
   const [login, setLogin] = useState('');
   const [result, setResult ] = useState([]);
+  const [loader, setLoader ] = useState(false);
 
   const dataCall = () => {
+    
    // https://api.github.com/search/users?q=foo%20in:login&per_page=3
     if(login !== '') {
+      setLoader(true);
       let url = 'https://api.github.com/search/users?q='+login+'%20in:login';
       fetch(url)
       .then((res) => res.json())
       .then((d) => {
         setResult(d);
+        setLoader(false);
       })
     }
   }
@@ -25,10 +29,21 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container">
-        <Search getLogin = { login => setLogin(login) }/>
-        <Results result={result}/>
+     
+      <div className="body-wrap">
+        <div className="container">
+          <Search getLogin = { login => setLogin(login) }/>
+          { (!loader) ?
+            <Results result={result}/>
+          :
+            <div className="lds-roller loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          }
+        </div>
       </div>
+      
+       
+
+      
     </div>
   );
 }
