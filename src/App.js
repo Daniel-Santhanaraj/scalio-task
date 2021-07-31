@@ -2,8 +2,6 @@ import React, {useEffect, useState} from "react";
 import './App.scss';
 import Search from './components/Search';
 import Results from './components/Results';
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -15,23 +13,19 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
 function App() {
   const classes = useStyles();
+  const perPage = 9;
   const [result, setResult ] = useState([]);
   const [loader, setLoader ] = useState(false);
-
   const [currentPageCount, setCurrentPageCount ] = useState(1);
-  const perPage = 9;
   const [totalPage, setTotalPage ] = useState(0);
   const [message, setMessage ] = useState("");
   const [login, setLogin] = useState('');
 
   const dataCall = () => {
       setLoader(true);
-      console.log(login, currentPageCount)
       let url = 'https://api.github.com/search/users?q='+login+'%20in:login&per_page='+perPage+'&&page='+currentPageCount;
-     
       fetch(url)
       .then((res) => res.json())
       .then((d) => {
@@ -47,7 +41,6 @@ function App() {
   }
   useEffect(dataCall, [login, currentPageCount]);
  
-
   return (
     <div className="App">
       <div className="body-wrap">
@@ -71,8 +64,7 @@ function App() {
                      />
                   </div>
                   : null
-                }
-                
+                }   
               </div>
           :
             <div className="lds-roller loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
